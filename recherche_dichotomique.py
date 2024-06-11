@@ -6,17 +6,26 @@ taille = len(liste)
 milieu = int()
 min, max = 1, taille
 trouvee = False
-while min != max and trouvee == False:
+
+while min <= max and trouvee == False:
     milieu = (min + max)//2
-    if (liste[milieu] == element):
+    if (liste[milieu-1] == element):
         trouvee = True
         position = milieu
-        print("L'élément '",element, "'a été trouvé dans le tableau a la position",position+1)
+        print("L'élément '",element, "'a été trouvé dans le tableau a la position",position)
 
-    if(liste[milieu] < element):
+    if(liste[milieu-1] < element):
         min = milieu+1
-    if(liste[milieu] > element):
+        if(min == max-1 and liste[min] == element):
+            print("L'élément '",element, "'a été trouvé dans le tableau a la position",min)
+
+
+    if(liste[milieu-1] > element):
         max = milieu-1
+        if(min == max and liste[max] == element):
+            print("L'élément '",element, "'a été trouvé dans le tableau a la position",min)
 
 if(trouvee == False):
     print("L'élément '", element,"'ne se trouve pas dans la liste !!")
+
+    
